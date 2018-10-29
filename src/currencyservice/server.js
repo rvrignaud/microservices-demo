@@ -49,7 +49,9 @@ const logger = pino({
   messageKey: 'message',
   changeLevelName: 'severity',
   useLevelLabels: true
+
 });
+const problem = true ;
 
 /**
  * Helper function that loads a protobuf file.
@@ -127,6 +129,11 @@ function getSupportedCurrencies (call, callback) {
  */
 function convert (call, callback) {
   logger.info('received conversion request');
+  if (problem) {
+    var startTime = Date.now();
+    while ((Date.now() - startTime) < 1000) {
+    }
+  }
   try {
     _getCurrencyData((data) => {
       const request = call.request;
